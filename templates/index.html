@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>창문 보안 시스템</title>
+    <script>
+        async function sendCommand(command) {
+            const response = await fetch(`/${command}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const result = await response.json();
+            alert(result.status === "locked" ? "창문이 잠겼습니다." : "창문이 열렸습니다.");
+        }
+    </script>
+</head>
+<body>
+    <h1>창문 보안 시스템</h1>
+    <button onclick="sendCommand('lock')">잠금</button>
+    <button onclick="sendCommand('unlock')">열림</button>
+</body>
+</html>
