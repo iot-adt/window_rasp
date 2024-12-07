@@ -27,7 +27,7 @@ left_servo.start(0)
 right_servo.start(0)
 
 # 알림을 보낼 서버 URL
-ALERT_SERVER_URL = "http://10.144.158.254:5000/beep"  # 경고를 보낼 서버 URL
+ALERT_SERVER_URL = "http://10.144.158.254:5000/alarm"  # 경고를 보낼 서버 URL
 
 # 잠금 상태 변수
 is_locked = False
@@ -66,7 +66,7 @@ def alert_distance():
         if is_locked:
             distance = get_distance()
             print(f"측정된 거리: {distance}cm")  # 디버깅용 출력
-            if distance > 4:
+            if distance > 5:
                 print(f"경고: 거리 초과 {distance}cm")
                 try:
                     response = requests.post(ALERT_SERVER_URL)
